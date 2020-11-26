@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.han.mapper.ManagerMapper">
+
+    <resultMap id="ResultMapManager" type="Manager">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="manager_name" column="manager_name" jdbcType="VARCHAR"/>
+        <result property="manager_password" column="manager_password" jdbcType="VARCHAR"/>
+        <result property="phone_number" column="phone_number" jdbcType="VARCHAR"/>
+        <result property="manager_age" column="manager_age" jdbcType="INTEGER"/>
+        <result property="manager_sex" column="manager_sex" jdbcType="VARCHAR"/>
+        <!--<association property="order" column="order_id" select="cn.han.mapper.OrdersMapper.getById"/>-->
+    </resultMap>
+
+    <sql id="Manager_field">
+        id,manager_name,manager_password,phone_number,manager_age,manager_sex
+    </sql>
+
+    <sql id="Manager_fieldsql">
+        id,manager_name,manager_password,phone_number,manager_age,manager_sex
+    </sql>
+
+    <sql id="Manager_where">
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="manager_name != null">
+            and manager_name = #{manager_name}
+        </if>
+        <if test="manager_password != null">
+            and manager_password = #{manager_password}
+        </if>
+        <if test="phone_number != null">
+            and phone_number = #{phone_number}
+        </if>
+        <if test="manager_age != null">
+            and manager_age = #{manager_age}
+        </if>
+        <if test="manager_sex != null">
+            and manager_sex = #{manager_sex}
+        </if>
+    </sql>
+
+    <select id="getByEntity" parameterType="Manager" resultMap="ResultMapManager">
+        select * from manager where 1=1
+        <include refid="Manager_where"/>
+    </select>
+
+    <insert id="insert" parameterType="Manager" useGeneratedKeys="true" keyProperty="userId">
+        insert into manager(
+        <include refid="Manager_fieldsql"/>
+        ) values(
+        #{id},#{manager_name},#{manager_password},#{phone_number},#{manager_age},#{manager_sex}
+        )
+    </insert>
+
+    <select id="getById" parameterType="java.lang.Integer" resultMap="ResultMapManager">
+        select * from manager where id=${id}
+    </select>
+
+    <select id="getEntityByManager_name" parameterType="String" resultType="Manager">
+        select * from manager where manager_name=#{manager_name}
+    </select>
+</mapper>

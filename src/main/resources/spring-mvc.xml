@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <!--扫描controller-->
+    <context:component-scan base-package="cn.han.controller"></context:component-scan>
+
+    <!--添加<annotation-driver>-->
+    <mvc:annotation-driven></mvc:annotation-driven>
+
+    <!--视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" id="internalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp" />
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!--spring mvc的文件上传模块是可插拔的，默认没有启用，只要在 spring mvc 容器中实例化 MultipartResolver 接口的实现类即可，
+	spring mvc 为我们提供了整合了 commons-fileupload 的 CommonsMultipartResolver 解析器，只需实例化该类即可-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
+    <!--静态资源-->
+    <mvc:default-servlet-handler />
+    <!--<mvc:resources mapping="/res/**" location="/res/"/>-->
+</beans>

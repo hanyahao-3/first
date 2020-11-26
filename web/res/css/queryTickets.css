@@ -1,0 +1,196 @@
+.query-ditaion{
+    width: 1200px;
+    height: 74px;
+    background-color: rgb(222,222,222);
+    margin-top: 10px;
+    border: 1px solid #1b1e21;
+    padding: 12px 10px 12px 10px;
+    border-radius: 3px;
+}
+.query-ditaion .goByType{
+    float: left;
+}
+.query-ditaion .goByType li{
+    width: 80px;
+    height: 24px;
+    padding: 2px;
+}
+.query-ditaion .seperate-line{
+    width: 1px;
+    border: 1px solid #495057;
+    float: left;
+    height: 48px;
+}
+.query-dition-middle{
+    width: 801px;
+    height: 50px;
+    float: left;
+    margin-top: 20px;
+    position: relative;
+}
+.query-dition-middle .goByType2 li{
+    float: left;
+    width: 190px;
+    height: 50px;
+    padding-left: 16px;
+    margin-top: -8px;
+    box-sizing: border-box;
+}
+.query-dition-middle .goByType2 li input{
+    width: 120px;
+    height: 30px;
+}
+.seperate-line2{
+    width: 1px;
+    border: 1px solid #495057;
+    float: left;
+    height: 48px;
+    margin-left: 30px;
+}
+.query-ditaion-last{
+    width: 209px;
+    height: 58px;
+    position: relative;
+    float: right;
+    margin-left: 20px;
+}
+.query-ditaion-last .check-button{
+    width: 92px;
+    height: 30px;
+    line-height: 16px;
+}
+
+.query-ditaion2{
+    width: 1200px;
+    height: 30px;
+    margin-top: 10px;
+}
+.query-ditaion2-1 li{
+    float: left;
+    width: 100px;
+    height: 30px;
+    border: 1px solid black;
+    border-bottom: none;
+    position: relative;
+    text-align: center;
+    background-color: rgb(222,222,222);
+ }
+.query-ditaion2 .check-on2{
+    width: 300px;
+}
+.query-ditaion3{
+    width: 1200px;
+    height: 52px;
+    border: 1px solid black;
+    margin-top: 30px;
+    position: absolute;
+}
+.query-ditaion3 .train_type{
+    height: 22px;
+    width: 100px;
+    line-height: 45px;
+    padding: 2px 0 2px 0;
+    font-size: 17px;
+    float: left;
+    margin-left: 20px;
+}
+.query-ditaion3 span button{
+    margin-top: 12px;
+    width: 45px;
+}
+
+.query-ditaion2-2{
+    float: right;
+    margin-right: 750px;
+    margin-top: 12px;
+}
+.query-ditaion2-2 li{
+    float: left;
+}
+.query-ditaion2-2 :nth-child(2) input{
+    margin-left: 20px;
+}
+.query-ditaion2-2 :nth-child(2) label{
+    margin-right: 20px;
+}
+
+.query-result{
+    width: 1190px;
+    margin-top: 80px;
+    border: 1px solid black;
+}
+.query-result table{
+
+    border-collapse: collapse;
+}
+.query-result table td{
+    width: 120px;
+    height: 50px;
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 2px;
+}
+.query-result table :first-child td{
+    background-color: rgb(222,222,222);
+}
+
+
+.t_number{
+    margin-top: 6px;
+}
+.search-button{
+    margin-left: 10px;
+}
+.buy-button{
+    width: 300px;
+    margin-top: 30px;
+    margin-left: 300px;
+}
+
+
+.tickets-details div{
+    margin: 10px;
+}
+.station-label{
+    font-size: 12px;
+    font-weight: lighter;
+}
+.t_pass_stations .station-font{
+    font-weight: bolder
+}
+
+.seats-font{
+    font-weight: lighter;
+    color: #495057;
+}
+
+.pass-table table{
+    border-collapse: collapse;
+    border: none;
+    width: 100%;
+}
+.pass-table table tr{
+    border: 1px solid #1b1e21;
+    text-align: center;
+    width: 50%;
+}
+.pass-table table td{
+    border: 1px solid #1b1e21;
+}
+.pass-table table{
+    background-color: rgb(222,222,222);
+}
+.pass-station-head{
+    color: white;
+    background-color: #1b1e21;
+}
+.pass-station{
+    height: 20px;
+    width: 100%;
+    position: fixed;
+    bottom: 20px;
+}
+.pass-station span{
+    float: right;
+    margin-right: 13px;
+}

@@ -1,0 +1,82 @@
+.per-mid-h {
+    width: 1200px;
+    height: 50px;
+    margin-top: 20px;
+}
+
+.per-mid-m {
+    width: 1200px;
+    height: 800px;
+}
+.per-mid-m-l{
+    background-color: rgb(222,222,222);
+    width: 180px;
+    float: left;
+}
+
+/*左侧下拉栏*/
+.per-menu ul li { /*height:45px; */
+    line-height: 50px;
+    border-bottom: 1px solid #eee;
+    font-size: 15px;
+}
+.per-menu ul li span {
+    display: block;
+    width: 100%;
+    position: relative;
+    padding: 0 20px;
+}
+.per-menu ul li span i {
+    display: block;
+    height: 20px;
+    width: 20px;
+    background: url(../img/arr.png) no-repeat center center;
+    background-size: 80% 80%;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    margin-top: -10px;
+    transition: all 0.3s ease-out;
+    transform: rotate(0deg);
+}
+.per-menu ul li span i.action {
+    transition: all 0.3s ease-out;
+    transform: rotate(180deg);
+}
+.per-menu ul li > dl {
+    display: none;
+    padding-left: 35px;
+    background-color: rgb(222,222,222);
+}
+.per-menu ul li > dl a {
+    display: block;
+    width: 100%;
+    font-size: 14px;
+    text-decoration: none;
+}
+.per-menu ul :first-child{
+    color: #1b1e21;
+    font-size: 15px;
+}
+
+.per-mid-m-r{
+    width: 1018px;
+    height: 800px;
+    border: 1px solid #d3d9df;
+    float: right;
+}
+
+
+.per-mid-m-r table{
+    border-collapse: collapse;
+}
+.per-mid-m-r table td{
+    width: 120px;
+    height: 50px;
+    border: 1px solid black;
+    text-align: center;
+    border-radius: 2px;
+}
+.per-mid-m-r table :first-child td{
+    background-color: rgb(222,222,222);
+}

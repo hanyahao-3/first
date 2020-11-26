@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.han.mapper.UserMapper">
+
+    <resultMap id="ResultMapUser" type="User">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="user_name" column="user_name" jdbcType="VARCHAR"/>
+        <result property="user_password" column="user_password" jdbcType="VARCHAR"/>
+        <result property="phone_number" column="phone_number" jdbcType="VARCHAR"/>
+        <result property="user_age" column="user_age" jdbcType="INTEGER"/>
+        <result property="user_sex" column="user_sex" jdbcType="VARCHAR"/>
+        <!--<association property="order" column="order_id" select="cn.han.mapper.OrdersMapper.getById"/>-->
+    </resultMap>
+
+    <sql id="User_field">
+        id,user_name,user_password,phone_number,user_age,user_sex
+    </sql>
+
+    <sql id="User_fieldsql">
+        id,user_name,user_password,phone_number,user_age,user_sex
+    </sql>
+
+    <sql id="User_where">
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="user_name != null">
+            and user_name = #{user_name}
+        </if>
+        <if test="user_password != null">
+            and user_password = #{user_password}
+        </if>
+        <if test="phone_number != null">
+            and phone_number = #{phone_number}
+        </if>
+        <if test="user_age != null">
+            and user_age = #{user_age}
+        </if>
+        <if test="user_sex != null">
+            and user_sex = #{user_sex}
+        </if>
+    </sql>
+
+    <sql id="User_where_update">
+
+        <if test="user_password != null">
+            user_password = #{user_password},
+        </if>
+        <if test="phone_number != null">
+            phone_number = #{phone_number},
+        </if>
+        <if test="user_age != null">
+           user_age = #{user_age},
+        </if>
+        <if test="user_sex != null">
+            user_sex = #{user_sex},
+        </if>
+    </sql>
+
+    <select id="getByEntity" parameterType="User" resultMap="ResultMapUser">
+        select * from user where 1=1
+        <include refid="User_where"/>
+    </select>
+
+    <insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="userId">
+        insert into user(
+        <include refid="User_fieldsql"/>
+        ) values(
+        #{id},#{user_name},#{user_password},#{phone_number},#{user_age},#{user_sex}
+        )
+    </insert>
+
+    <select id="getById" parameterType="java.lang.Integer" resultMap="ResultMapUser">
+        select * from user where id=${id}
+    </select>
+
+    <select id="getEntityByUser_name" parameterType="String" resultType="User">
+        select * from user where user_name=#{user_name}
+    </select>
+
+    <select id="getAll" resultType="User">
+        select * from user
+    </select>
+
+    <delete id="deleteById" parameterType="Integer">
+        delete from user where id=#{id}
+    </delete>
+
+    <delete id="updateById" parameterType="User">
+        update user
+        <set>
+            <include refid="User_where_update"></include>
+        </set>
+        where user_name=#{user_name}
+    </delete>
+</mapper>

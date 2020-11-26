@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.han.mapper.TrainTypePriceMapper">
+
+    <resultMap id="ResultMapTrainTypePrice" type="Train_type_price">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="train_type" column="train_type" jdbcType="VARCHAR"/>
+        <result property="train_price" column="train_price" jdbcType="VARCHAR"/>
+        <!--<association property="order" column="order_id" select="cn.han.mapper.OrdersMapper.getById"/>-->
+    </resultMap>
+
+    <sql id="TrainTypePrice_field">
+        id,train_type,train_price
+    </sql>
+
+    <sql id="TrainTypePrice_fieldsql">
+        id,train_type,train_price
+    </sql>
+
+    <sql id="TrainTypePrice_where">
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="train_type != null">
+            and train_type = #{train_type}
+        </if>
+        <if test="train_price != null">
+            and train_price = #{train_price}
+        </if>
+    </sql>
+
+    <select id="getPriceByTrainType" parameterType="String" resultType="String">
+        select train_price from train_type_price where train_type=#{train_type}
+    </select>
+
+</mapper>

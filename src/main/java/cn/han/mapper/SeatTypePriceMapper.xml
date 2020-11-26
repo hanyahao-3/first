@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.han.mapper.SeatTypePriceMapper">
+
+    <resultMap id="ResultMapSeatTypePrice" type="Seat_type_price">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="seat_type" column="seat_type" jdbcType="VARCHAR"/>
+        <result property="seat_price" column="seat_price" jdbcType="VARCHAR"/>
+        <!--<association property="order" column="order_id" select="cn.han.mapper.OrdersMapper.getById"/>-->
+    </resultMap>
+
+    <sql id="SeatTypePrice_field">
+        id,seat_type,seat_price
+    </sql>
+
+    <sql id="SeatTypePrice_fieldsql">
+        id,seat_type,seat_price
+    </sql>
+
+    <sql id="SeatTypePrice_where">
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="seat_type != null">
+            and seat_type = #{seat_type}
+        </if>
+        <if test="seat_price != null">
+            and seat_price = #{seat_price}
+        </if>
+    </sql>
+
+    <select id="getPriceBySeatType" parameterType="String" resultType="String">
+        select seat_price from seat_type_price where seat_type=#{seat_type}
+    </select>
+</mapper>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.han.mapper.StationsMapper">
+
+    <resultMap id="ResultMapStations" type="Stations">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="train_number" column="train_number" jdbcType="VARCHAR"/>
+        <result property="station" column="station" jdbcType="VARCHAR"/>
+        <result property="in_time" column="in_time" jdbcType="TIMESTAMP"/>
+        <result property="out_time" column="out_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Stations_field">
+        id,train_number,station,in_time,out_time
+    </sql>
+
+    <sql id="Stations_fieldsql">
+        id,train_number,station,in_time,out_time
+    </sql>
+
+    <sql id="Stations_where">
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="train_number != null">
+            and train_number = #{train_number}
+        </if>
+        <if test="station != null">
+            and station = #{station}
+        </if>
+        <if test="in_time != null">
+            and in_time = #{in_time}
+        </if>
+        <if test="out_time != null">
+            and out_time = #{out_time}
+        </if>
+    </sql>
+
+    <select id="queryByTime" resultType="String">
+        select train_number from stations where out_time>#{start_time} and train_number=#{train_number} and station=#{start_place}
+    </select>
+
+    <select id="queryByTrain_number" parameterType="String" resultType="String">
+        select station from stations where train_number=#{train_number}
+    </select>
+    
+    <select id="queryByTnu_Sta" resultType="Stations">
+        select * from stations where train_number=#{train_number} and station=#{station}
+    </select>
+</mapper>

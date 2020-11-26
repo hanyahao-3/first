@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.han.mapper.AnnouncementsMapper">
+
+    <resultMap id="ResultMapAnnouncements" type="Announcements">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="add_time" column="add_time" jdbcType="TIMESTAMP"/>
+        <result property="annountcments_name" column="annountcments_name" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <!--<association property="order" column="order_id" select="cn.han.mapper.OrdersMapper.getById"/>-->
+    </resultMap>
+
+    <sql id="Announcements_field">
+        id,add_time,annountcments_name,content
+    </sql>
+
+    <sql id="Announcements_fieldsql">
+        id,add_time,annountcments_name,content
+    </sql>
+
+    <sql id="Announcements_where">
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="add_time != null">
+            and add_time = #{add_time}
+        </if>
+        <if test="annountcments_name != null">
+            and annountcments_name = #{annountcments_name}
+        </if>
+        <if test="content != null">
+            and content = #{content}
+        </if>
+    </sql>
+
+    <select id="getAll" resultType="Announcements">
+        select * from announcements
+    </select>
+
+    <select id="getById" resultType="Announcements">
+        select * from announcements where id=#{id}
+    </select>
+
+    <insert id="insertEntity" parameterType="Announcements">
+        insert into announcements (add_time,annountcments_name,content)values (#{add_time},#{annountcments_name},#{content})
+    </insert>
+
+    <delete id="deleteById" parameterType="Integer">
+        delete from announcements where id=#{id}
+    </delete>
+
+</mapper>

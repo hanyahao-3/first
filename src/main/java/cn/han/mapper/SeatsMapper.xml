@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.han.mapper.SeatsMapper">
+
+    <resultMap id="ResultMapSeats" type="Seats">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="train_number" column="train_number" jdbcType="VARCHAR"/>
+        <result property="occupiedAreaFlag" column="occupiedAreaFlag" jdbcType="VARCHAR"/>
+        <result property="carriage_number" column="carriage_number" jdbcType="INTEGER"/>
+        <result property="seat_number" column="seat_number" jdbcType="INTEGER"/>
+        <result property="seat_type" column="seat_type" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="mapIdOccupiedAreaFlag" type="HashMap">
+        <result property="key" column="seat_id" javaType="java.lang.Integer"/>
+        <result property="value" column="seat_occupiedAreaFlag" javaType="java.lang.String"/>
+    </resultMap>
+
+    <sql id="Seats_field">
+        id,train_number,occupiedAreaFlag,carriage_number,seat_number,seat_type
+    </sql>
+
+    <sql id="Seats_fieldsql">
+        id,train_number,occupiedAreaFlag,carriage_number,seat_number,seat_type
+    </sql>
+
+    <sql id="Seats_where">
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="train_number != null">
+            and train_number = #{train_number}
+        </if>
+        <if test="occupiedAreaFlag != null">
+            and occupiedAreaFlag = #{occupiedAreaFlag}
+        </if>
+        <if test="carriage_number != null">
+            and carriage_number = #{carriage_number}
+        </if>
+        <if test="seat_number != null">
+            and seat_number = #{seat_number}
+        </if>
+        <if test="seat_type != null">
+            and seat_type = #{seat_type}
+        </if>
+    </sql>
+
+    <select id="queryIdOccupiedAreaFlag" parameterType="String" resultMap="mapIdOccupiedAreaFlag">
+        select id as seat_id,occupiedAreaFlag as seat_occupiedAreaFlag from seats where train_number=#{train_number}
+    </select>
+
+    <select id="getById" parameterType="Integer" resultMap="ResultMapSeats">
+        select * from seats where id = #{id};
+    </select>
+
+    <select id="judgeSeatTypeById" parameterType="int" resultType="String">
+        select seat_type from seats where id=#{id}
+    </select>
+
+    <select id="getOccupiedAreaFlagById" parameterType="Integer" resultType="String">
+        select occupiedAreaFlag from seats where id=#{id}
+    </select>
+
+    <update id="updateOccupiedAreaFlagById">
+        update seats set occupiedAreaFlag=#{occupiedAreaFlag} where id=#{id}
+    </update>
+
+    <select id="getEntityById" parameterType="Integer" resultType="Seats">
+        select * from seats where id=#{id}
+    </select>
+
+    <select id="getEntityByCarriage_Seat_trainNumber" resultType="Seats">
+        select * from seats where carriage_number=#{carriage_number} and seat_number=#{seat_number} and train_number=#{train_number}
+    </select>
+</mapper>

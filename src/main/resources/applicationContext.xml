@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--扫描除了controller包的其他包-->
+    <context:component-scan base-package="cn.han.mapper,cn.han.entity,cn.han.service,cn.han.utils"></context:component-scan>
+
+    <!--c3p0数据源-->
+    <context:property-placeholder location="classpath:db.properties" />
+    <bean class="com.mchange.v2.c3p0.ComboPooledDataSource" id="comboPooledDataSource">
+        <property name="driverClass" value="${mysql.driver}"></property>
+        <property name="jdbcUrl" value="${mysql.url}"></property>
+        <property name="user" value="${mysql.username}"></property>
+        <property name="password" value="${mysql.password}"></property>
+    </bean>
+
+    <!--sqlsessionFactoryBean-->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sqlSessionFactory">
+        <property name="dataSource" ref="comboPooledDataSource"></property>
+        <property name="configLocation" value="classpath:mybatis.xml"></property>
+        <property name="typeAliasesPackage" value="cn.han.entity"></property>
+        <property name="mapperLocations" value="classpath:cn/han/mapper/*Mapper.xml"></property>
+    </bean>
+    <!--mapper接口-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" id="mapperScannerConfigurer">
+        <property name="basePackage" value="cn.han.mapper"></property>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"></property>
+    </bean>
+
+    <!--事务-->
+    <bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="dataSourceTransactionManager">
+        <property name="dataSource" ref="comboPooledDataSource"></property>
+    </bean>
+    <tx:annotation-driven transaction-manager="dataSourceTransactionManager"></tx:annotation-driven>
+</beans>

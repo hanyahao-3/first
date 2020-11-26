@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.han.mapper.OrdersMapper">
+
+    <resultMap id="ResultMapOrders" type="Orders">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="train_number" column="train_number" jdbcType="VARCHAR"/>
+        <result property="from_place" column="from_place" jdbcType="VARCHAR"/>
+        <result property="to_place" column="to_place" jdbcType="VARCHAR"/>
+        <result property="carriage_number" column="carriage_number" jdbcType="INTEGER"/>
+        <result property="seat_number" column="seat_number" jdbcType="INTEGER"/>
+        <result property="of_user" column="of_user" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Orders_field">
+        id,train_number,from_place,to_place,carriage_number,seat_number,of_user
+    </sql>
+
+    <sql id="Orders_fieldsql">
+        train_number,from_place,to_place,carriage_number,seat_number,of_user
+    </sql>
+
+    <sql id="Orders_where">
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="from_place != null">
+            and from_place = #{from_place}
+        </if>
+        <if test="to_place != null">
+            and to_place = #{to_place}
+        </if>
+        <if test="train_number != null">
+            and train_number = #{train_number}
+        </if>
+        <if test="carriage_number != null">
+            and carriage_number = #{carriage_number}
+        </if>
+        <if test="seat_number != null">
+            and seat_number = #{seat_number}
+        </if>
+        <if test="of_user != null">
+            and of_user = #{of_user}
+        </if>
+    </sql>
+
+    <select id="getById" parameterType="java.lang.Integer" resultMap="ResultMapOrders">
+        select * from orders where id=${order_id}
+    </select>
+
+    <insert id="addOrderByEntity" parameterType="Orders">
+        insert into orders(
+        <include refid="Orders_fieldsql"/>
+        )values (
+        #{train_number},#{from_place},#{to_place},#{carriage_number},#{seat_number},#{of_user}
+        )
+    </insert>
+
+    <select id="getEntityByOf_user" parameterType="String" resultType="Orders">
+        select * from orders where of_user=#{of_user}
+    </select>
+    
+    <delete id="deleteByEntity" parameterType="Orders">
+        delete from orders where train_number=#{train_number}
+        and from_place=#{from_place}
+        and to_place=#{to_place}
+        and carriage_number=#{carriage_number}
+        and seat_number=#{seat_number}
+    </delete>
+</mapper>

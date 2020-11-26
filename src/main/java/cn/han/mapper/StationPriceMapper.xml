@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.han.mapper.StationPriceMapper">
+
+    <resultMap id="ResultMapStationPrice" type="Station_price">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="from_station" column="from_station" jdbcType="VARCHAR"/>
+        <result property="end_station" column="end_station" jdbcType="VARCHAR"/>
+        <result property="station_price" column="station_price" jdbcType="DECIMAL"/>
+        <!--<association property="order" column="order_id" select="cn.han.mapper.OrdersMapper.getById"/>-->
+    </resultMap>
+
+    <sql id="StationPrice_field">
+        id,from_station,end_station,station_price
+    </sql>
+
+    <sql id="StationPrice_fieldsql">
+        id,from_station,end_station,station_price
+    </sql>
+
+    <sql id="StationPrice_where">
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="from_station != null">
+            and from_station = #{from_station}
+        </if>
+        <if test="end_station != null">
+            and end_station = #{end_station}
+        </if>
+        <if test="station_price != null">
+            and station_price = #{station_price}
+        </if>
+    </sql>
+
+    <select id="getPriceByStation" resultType="BigDecimal">
+        select station_price from station_price where from_station=#{from_station} and end_station=#{end_station}
+    </select>
+</mapper>
