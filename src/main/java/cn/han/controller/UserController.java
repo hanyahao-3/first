@@ -90,8 +90,13 @@ public class UserController {
     @RequestMapping("/register")
     @ResponseBody
     public Object register(User u){
-        int insert = userService.insert(u);
         JSONObject js = new JSONObject();
+        User entityByUser_name = userService.getEntityByUser_name(u.getUser_name());
+        if(entityByUser_name!=null){
+            js.put(Consts.RES,0);
+            return js;
+        }
+        int insert = userService.insert(u);
         if(insert==0){
             js.put(Consts.RES,0);
             System.out.println(js.get(Consts.RES));

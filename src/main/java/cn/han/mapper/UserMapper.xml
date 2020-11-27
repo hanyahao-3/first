@@ -62,7 +62,7 @@
         <include refid="User_where"/>
     </select>
 
-    <insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="userId">
+    <insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="id">
         insert into user(
         <include refid="User_fieldsql"/>
         ) values(
@@ -74,7 +74,7 @@
         select * from user where id=${id}
     </select>
 
-    <select id="getEntityByUser_name" parameterType="String" resultType="User">
+    <select id="getEntityByUser_name" parameterType="java.lang.String" resultType="User">
         select * from user where user_name=#{user_name}
     </select>
 

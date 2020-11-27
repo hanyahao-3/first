@@ -24,7 +24,6 @@
                 url:"${ctx}/login/register",
                 data:$('#form1').serialize(),
                 success:function (result) {
-                    console.log(result);
                     if(result.res==0){
                         alert("注册失败！");
                     }else {
@@ -64,25 +63,25 @@
                 <div class="form-group row">
                     <label for="inputEmail3" class="col-sm-2 col-form-label">用户名</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" name="user_name">
+                        <input class="form-control" id="inputEmail3" name="user_name" required="" lay-verify="required">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">密码</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPassword3" name="user_password">
+                        <input type="password" class="form-control" id="inputPassword3" name="user_password" required="" lay-verify="required">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">年龄</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputAge" name="user_age">
+                        <input class="form-control" id="inputAge" name="user_age" required="" lay-verify="required">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputPassword3" class="col-sm-2 col-form-label">手机号</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="inputPhoneNumber" name="phone_number">
+                        <input  class="form-control" id="inputPhoneNumber" name="phone_number" required="" lay-verify="phone" lay-verify="required">
                     </div>
                 </div>
                 <fieldset class="form-group">
@@ -90,13 +89,13 @@
                         <legend class="col-form-label col-sm-2 pt-0">性别</legend>
                         <div class="col-sm-10">
                             <div class="form-check" style="float: left;margin-right: 40px">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                                <input class="form-check-input" type="radio" name="user_sex" id="gridRadios1" value="男" checked>
                                 <label class="form-check-label" for="gridRadios1">
                                     男
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                <input class="form-check-input" type="radio" name="user_sex" id="gridRadios2" value="女">
                                 <label class="form-check-label" for="gridRadios2">
                                     女
                                 </label>
@@ -106,7 +105,7 @@
                 </fieldset>
                 <div class="form-group row">
                     <div class="col-sm-10" style="margin-left: 70px">
-                        <button type="submit" class="btn btn-primary btn-lg btn-block">注册</button>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block" onclick="zhuce()">注册</button>
                     </div>
                 </div>
             </form>
@@ -114,4 +113,11 @@
     </div>
 </div>
 </body>
+<%--<script>layui.use(['form', 'layer'],--%>
+<%--    function() {--%>
+<%--        $ = layui.jquery;--%>
+<%--        var form = layui.form,--%>
+<%--            layer = layui.layer;--%>
+<%--    })--%>
+<%--</script>--%>
 </html>
