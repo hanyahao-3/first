@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.han.mapper.ScenicDetailMapper">
+
+    <resultMap id="ResultMapScenicDetail" type="Scenic_detail">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="travel_time" column="travel_time" jdbcType="VARCHAR"/>
+        <result property="travel_type" column="travel_type" jdbcType="VARCHAR"/>
+        <result property="contact_phone" column="contact_phone" jdbcType="VARCHAR"/>
+        <result property="numbering" column="numbering" jdbcType="VARCHAR"/>
+        <result property="destination" column="destination" jdbcType="VARCHAR"/>
+        <result property="describes" column="describes" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="ScenicDetail_field">
+        id,travel_time,travel_type,contact_phone,numbering,destination,describes
+    </sql>
+
+    <sql id="ScenicDetail_fieldsql">
+        id,travel_time,travel_type,contact_phone,numbering,destination,describes
+    </sql>
+
+    <sql id="ScenicDetail_where">
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="travel_time != null">
+            and travel_time = #{travel_time}
+        </if>
+        <if test="travel_type != null">
+            and travel_type = #{travel_type}
+        </if>
+        <if test="contact_phone != null">
+            and contact_phone = #{contact_phone}
+        </if>
+        <if test="numbering != null">
+            and numbering = #{numbering}
+        </if>
+        <if test="destination != null">
+            and destination = #{destination}
+        </if>
+        <if test="describes != null">
+            and describes = #{describes}
+        </if>
+    </sql>
+
+    <!--  更新  -->
+    <sql id="ScenicDetail_update">
+        <if test="travel_time != null">
+           travel_time = #{travel_time},
+        </if>
+        <if test="travel_type != null">
+            travel_type = #{travel_type},
+        </if>
+        <if test="contact_phone != null">
+            contact_phone = #{contact_phone},
+        </if>
+        <if test="numbering != null">
+            numbering = #{numbering},
+        </if>
+        <if test="destination != null">
+            destination = #{destination},
+        </if>
+        <if test="describes != null">
+            describes = #{describes},
+        </if>
+    </sql>
+
+    <select id="getById" parameterType="Integer" resultMap="ResultMapScenicDetail">
+        select * from scenic_detail where id = #{id};
+    </select>
+
+</mapper>

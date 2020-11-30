@@ -1,7 +1,9 @@
 package cn.han.controller;
 
 import cn.han.entity.Announcements;
+import cn.han.entity.Scenic;
 import cn.han.service.AnnouncementsService;
+import cn.han.service.ScenicService;
 import cn.han.service.impl.AnnouncementsServiceImpl;
 import cn.han.utils.Consts;
 import com.github.pagehelper.PageHelper;
@@ -23,6 +25,8 @@ public class uIndexController {
 
     @Autowired
     private AnnouncementsService announcementsService;
+    @Autowired
+    private ScenicService scenicService;
 
     @RequestMapping("/uIndex")
     public String uIndex(Model model,@RequestParam(required = false,defaultValue = "1",value = "pn")Integer pn){
@@ -51,8 +55,11 @@ public class uIndexController {
         return "/hotel/hotelIndex";
     }
 
+    /*跳到预订景点页面*/
     @RequestMapping("/queryTrategy")
-    public String queryTrategy(){
+    public String queryTrategy(Model model){
+        List<Scenic> hotScenic = scenicService.getHotScenic();
+        model.addAttribute("hotScenic",hotScenic);
         return "/trategy/trategyIndex";
     }
 

@@ -131,14 +131,14 @@
     <div class="tour-detail2">
         <div class="tour-detail2-1">
             <div style="z-index: 900;position: absolute" class="detail1-zk">
-                <span >
+                <span>
                     享门市价6.7折
                 </span>
             </div>
             <div>
                 <img src="${ctx}/res/img/100h0z000000mkjxn58E1_C_280_200_Q60.jpg">
             </div>
-            <div  class="detail1">
+            <div class="detail1">
                 <div class="detail1-title">
                     快乐院长
                 </div>
@@ -155,14 +155,14 @@
         </div>
         <div class="tour-detail2-2">
             <div style="z-index: 900;position: absolute" class="detail1-zk">
-                <span >
+                <span>
                     享门市价7折
                 </span>
             </div>
             <div>
                 <img src="${ctx}/res/img/100j1h000001hkwyw2759_C_280_200_Q60.jpg">
             </div>
-            <div  class="detail1">
+            <div class="detail1">
                 <div class="detail1-title">
                     东方明珠
                 </div>
@@ -179,14 +179,14 @@
         </div>
         <div class="tour-detail2-3">
             <div style="z-index: 900;position: absolute" class="detail1-zk">
-                <span >
+                <span>
                     享门市价6折
                 </span>
             </div>
             <div>
                 <img src="${ctx}/res/img/100s1f000001gx3sr61E6_C_280_200_Q60.jpg">
             </div>
-            <div  class="detail1">
+            <div class="detail1">
                 <div class="detail1-title">
                     上海长风海洋世界
                 </div>
@@ -203,14 +203,14 @@
         </div>
         <div class="tour-detail2-4">
             <div style="z-index: 900;position: absolute" class="detail1-zk">
-                <span >
+                <span>
                     享门市价6.2折
                 </span>
             </div>
             <div>
                 <img src="${ctx}/res/img/100b1f000001gsne4382A_C_280_200_Q60.jpg">
             </div>
-            <div  class="detail1">
+            <div class="detail1">
                 <div class="detail1-title">
                     上海杜莎夫人蜡像馆
                 </div>
@@ -238,67 +238,69 @@
 </div>
 <div class="tour-detail">
     <ul>
-        <li>
-            <a href="#">
-                <img src="${ctx}/res/img/10051f000001gsqk8D0BC_C_280_200_Q60.jpg">
-                <div  class="detail1">
-                    <div class="detail1-title">
-                        上海迪士尼度假区
-                    </div>
-                    <div class="detail1-price">
-                        <div class="price1">
-                            ￥2000
-                            <font style="font-size: 15px;color: black">起</font>
+        <c:forEach items="${hotScenic}" var="hotSc">
+            <li>
+                <a href="${ctx}/uSceninc/toScenincDetail?id=${hotSc.id}">
+                    <img src="${hotSc.url1}">
+                    <div class="detail1">
+                        <div class="detail1-title">
+                            ${hotSc.scenic_name}
                         </div>
-                        <div class="states">
-                            34条热评
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <img src="${ctx}/res/img/100w1f000001gw9498A72_C_280_200_Q60.jpg">
-                <div  class="detail1">
-                    <div class="detail1-title">
-                        东方明珠
-                    </div>
-                    <div class="detail1-price">
-                        <div class="price1">
-                            ￥2000
-                            <font style="font-size: 15px;color: black">起</font>
-                        </div>
-                        <div class="states">
-                            111条热评
+                        <div class="detail1-price">
+                            <div class="price1">
+                                ￥2000
+                                <font style="font-size: 15px;color: black">起</font>
+                            </div>
+                            <div class="states">
+                                34条热评
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <img src="${ctx}/res/img/10070d0000006wasz1009_C_280_200_Q60.jpg">
-                <div  class="detail1">
-                    <div class="detail1-title">
-                        上海中心大厦之巅观光厅
-                    </div>
-                    <div class="detail1-price">
-                        <div class="price1">
-                            ￥2000
-                            <font style="font-size: 15px;color: black">起</font>
-                        </div>
-                        <div class="states">
-                            111条热评
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
+                </a>
+            </li>
+        </c:forEach>
+<%--        <li>--%>
+<%--            <a href="#">--%>
+<%--                <img src="${ctx}/res/img/100w1f000001gw9498A72_C_280_200_Q60.jpg">--%>
+<%--                <div class="detail1">--%>
+<%--                    <div class="detail1-title">--%>
+<%--                        东方明珠--%>
+<%--                    </div>--%>
+<%--                    <div class="detail1-price">--%>
+<%--                        <div class="price1">--%>
+<%--                            ￥2000--%>
+<%--                            <font style="font-size: 15px;color: black">起</font>--%>
+<%--                        </div>--%>
+<%--                        <div class="states">--%>
+<%--                            111条热评--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </a>--%>
+<%--        </li>--%>
+<%--        <li>--%>
+<%--            <a href="#">--%>
+<%--                <img src="${ctx}/res/img/10070d0000006wasz1009_C_280_200_Q60.jpg">--%>
+<%--                <div class="detail1">--%>
+<%--                    <div class="detail1-title">--%>
+<%--                        上海中心大厦之巅观光厅--%>
+<%--                    </div>--%>
+<%--                    <div class="detail1-price">--%>
+<%--                        <div class="price1">--%>
+<%--                            ￥2000--%>
+<%--                            <font style="font-size: 15px;color: black">起</font>--%>
+<%--                        </div>--%>
+<%--                        <div class="states">--%>
+<%--                            111条热评--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </a>--%>
+<%--        </li>--%>
         <li>
             <a href="#">
                 <img src="${ctx}/res/img/100h0z000000mkjxn58E1_C_280_200_Q60.jpg">
-                <div  class="detail1">
+                <div class="detail1">
                     <div class="detail1-title">
                         外滩
                     </div>
@@ -317,7 +319,7 @@
         <li>
             <a href="#">
                 <img src="${ctx}/res/img/100j1h000001hkwyw2759_C_280_200_Q60.jpg">
-                <div  class="detail1">
+                <div class="detail1">
                     <div class="detail1-title">
                         上海野生动物园
                     </div>
@@ -336,7 +338,7 @@
         <li>
             <a href="#">
                 <img src="${ctx}/res/img/10011f000001h390mDFD8_C_280_200_Q60.jpg">
-                <div  class="detail1">
+                <div class="detail1">
                     <div class="detail1-title">
                         御园
                     </div>
@@ -355,7 +357,7 @@
         <li>
             <a href="#">
                 <img src="${ctx}/res/img/010661200086qqhzs45E6_C_280_200_Q60.jpg">
-                <div  class="detail1">
+                <div class="detail1">
                     <div class="detail1-title">
                         上海欢乐谷
                     </div>
@@ -374,7 +376,7 @@
         <li>
             <a href="#">
                 <img src="${ctx}/res/img/100t0q000000gbd7x94D6_C_280_200_Q60.jpg">
-                <div  class="detail1">
+                <div class="detail1">
                     <div class="detail1-title">
                         上海杜莎夫人蜡像馆
                     </div>

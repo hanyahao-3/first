@@ -12,10 +12,10 @@
     <title>添加公告</title>
     <link rel="stylesheet" href="${ctx}/res/other/test1/css/pintuer.css">
     <link rel="stylesheet" href="${ctx}/res/other/test1/css/admin.css">
-    <script src="${ctx}/res/other/test1/js/jquery.js"></script>
+    <script src="${ctx}/res/other/test1/ueditor/third-party/jquery-1.10.2.js"></script>
     <script src="${ctx}/res/other/test1/js/pintuer.js"></script>
     <script type="text/javascript" src="${ctx}/res/other/test1/ueditor/ueditor.config.js"></script>
-    <script type="text/javascript" src="${ctx}/res/other/test1/ueditor/ueditor.all.js"></script>
+    <script type="text/javascript" src="${ctx}/res/other/test1/ueditor/ueditor.all.min.js"></script>
 </head>
 <body>
 <div class="panel admin-panel">
@@ -34,9 +34,9 @@
             <div class="form-group">
                 <div class="label"><label>内容</label></div>
                 <div class="field">
-                    <script type="text/plain" id="remark_txt_1" name="content" style="width: 100%;height: 300px;"></script>
+                    <script type="text/plain" id="remark_txt" name="content" style="width: 100%;height: 300px;"></script>
                     <script type="text/javascript">
-                        var editor = UE.getEditor('remark_txt_1');
+                        var editor = UE.getEditor('remark_txt');
                     </script>
                     <div class="tips"></div>
                 </div>

@@ -164,14 +164,14 @@
 
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont left-nav-li" lay-tips="景点攻略">&#xe604;</i>
-                    <cite>景点攻略</cite>
+                    <i class="iconfont left-nav-li" lay-tips="景点管理">&#xe604;</i>
+                    <cite>景点管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <a onclick="xadmin.add_tab('攻略列表','order-list.html')">
+                        <a onclick="xadmin.add_tab('景点列表','${ctx}/scenicList')">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>攻略列表</cite></a>
+                            <cite>景点列表</cite></a>
                     </li>
                 </ul>
             </li>

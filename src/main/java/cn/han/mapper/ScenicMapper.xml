@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.han.mapper.ScenicMapper">
+
+    <resultMap id="ResultMapScenic" type="Scenic">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="scenic_name" column="scenic_name" jdbcType="VARCHAR"/>
+        <result property="url1" column="url1" jdbcType="VARCHAR"/>
+        <result property="url2" column="url2" jdbcType="VARCHAR"/>
+        <result property="url3" column="url3" jdbcType="VARCHAR"/>
+        <result property="url4" column="url4" jdbcType="VARCHAR"/>
+        <result property="url5" column="url5" jdbcType="VARCHAR"/>
+        <result property="collection_sum" column="collection_sum" jdbcType="INTEGER"/>
+        <result property="price_id" column="price_id" jdbcType="INTEGER"/>
+        <result property="detail_id" column="price_id" jdbcType="INTEGER"/>
+        <association property="scenic_price" column="price_id" select="cn.han.mapper.ScenicPriceMapper.getById"/>
+        <association property="scenic_detail" column="detail_id" select="cn.han.mapper.ScenicDetailMapper.getById"/>
+        <collection property="scenic_comments" column="scenic_name" ofType="Scenic_comments" select="cn.han.mapper.ScenicCommentsMapper.getByScenicName"/>
+    </resultMap>
+
+    <sql id="Scenic_field">
+        id,scenic_name,url1,url2,url3,url4,url5,collection_sum,price_id,detail_id
+    </sql>
+
+    <sql id="Scenic_fieldsql">
+        id,scenic_name,url1,url2,url3,url4,url5,collection_sum,price_id,detail_id
+    </sql>
+
+    <sql id="Scenic_where">
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="scenic_name != null">
+            and scenic_name = #{scenic_name}
+        </if>
+        <if test="url1 != null">
+            and url1 = #{url1}
+        </if>
+        <if test="url2 != null">
+            and url2 = #{url2}
+        </if>
+        <if test="url3 != null">
+            and url3 = #{url3}
+        </if>
+        <if test="url4 != null">
+            and url4 = #{url4}
+        </if>
+        <if test="url5 != null">
+            and url5 = #{url5}
+        </if>
+        <if test="collection_sum != null">
+            and collection_sum = #{collection_sum}
+        </if>
+        <if test="price_id != null">
+            and price_id = #{price_id}
+        </if>
+        <if test="detail_id != null">
+            and detail_id = #{detail_id}
+        </if>
+    </sql>
+
+    <!--  更新  -->
+    <sql id="Scenic_update">
+        <if test="scenic_name != null">
+            scenic_name = #{scenic_name},
+        </if>
+        <if test="url1 != null">
+            url1 = #{url1},
+        </if>
+        <if test="url2 != null">
+            url2 = #{url2},
+        </if>
+        <if test="url3 != null">
+            url3 = #{url3},
+        </if>
+        <if test="url4 != null">
+            url4 = #{url4},
+        </if>
+        <if test="url5 != null">
+            url5 = #{url5},
+        </if>
+        <if test="collection_sum != null">
+            collection_sum = #{collection_sum},
+        </if>
+        <if test="price_id != null">
+            price_id = #{price_id},
+        </if>
+        <if test="detail_id != null">
+            detail_id = #{detail_id},
+        </if>
+    </sql>
+
+    <select id="getById" parameterType="Integer" resultMap="ResultMapScenic">
+        select * from scenic where id = #{id};
+    </select>
+
+    <select id="getAll" resultType="Scenic">
+        select * from scenic
+    </select>
+
+    <insert id="insertEntity" parameterType="Scenic" useGeneratedKeys="true" keyProperty="id">
+        insert into scenic(
+        <include refid="Scenic_fieldsql"/>
+        ) values(
+        #{id},#{scenic_name},#{url1},#{url2},#{url3},#{url4},#{url5},#{collection_sum},#{price_id},#{detail_id}
+        )
+    </insert>
+
+    <delete id="deleteById" parameterType="Integer">
+        delete from scenic where id=#{id}
+    </delete>
+
+    <update id="updateByEntity" parameterType="Scenic">
+        update scenic set scenic_name=#{scenic_name},url1=#{url1},url2=#{url2},url3=#{url3},url4=#{url4},url5=#{url5},collection_sum=#{collection_sum},price_id=#{price_id},#{detail_id} where id=#{id}
+    </update>
+
+    <select id="getHotScenic" resultType="Scenic">
+        select * from scenic order by collection_sum desc limit 0,3
+    </select>
+</mapper>

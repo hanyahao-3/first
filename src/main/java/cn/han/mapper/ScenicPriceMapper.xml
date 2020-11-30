@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.han.mapper.ScenicPriceMapper">
+
+    <resultMap id="ResultMapScenicPrice" type="Scenic_Price">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="scenic_price" column="scenic_price" jdbcType="VARCHAR"/>
+        <result property="scenic_zk" column="scenic_zk" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="ScenicPrice_field">
+        id,scenic_price,scenic_zk
+    </sql>
+
+    <sql id="ScenicPrice_fieldsql">
+        id,scenic_price,scenic_zk
+    </sql>
+
+    <sql id="ScenicPrice_where">
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="scenic_price != null">
+            and scenic_price = #{scenic_price}
+        </if>
+        <if test="scenic_zk != null">
+            and scenic_zk = #{scenic_zk}
+        </if>
+    </sql>
+
+
+    <select id="getById" parameterType="Integer" resultMap="ResultMapScenicPrice">
+        select * from scenic_price where id = #{id};
+    </select>
+
+</mapper>

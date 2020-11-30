@@ -1,8 +1,10 @@
 package cn.han.controller;
 
 import cn.han.entity.Announcements;
+import cn.han.entity.Scenic;
 import cn.han.entity.User;
 import cn.han.service.AnnouncementsService;
+import cn.han.service.ScenicService;
 import cn.han.service.UserService;
 import cn.han.utils.Consts;
 import com.github.pagehelper.PageHelper;
@@ -25,6 +27,8 @@ public class managerIndex {
     private UserService userService;
     @Autowired
     private AnnouncementsService announcementsService;
+    @Autowired
+    private ScenicService scenicService;
 
     /*切换账号*/
     @RequestMapping("/mLogin")
@@ -51,6 +55,17 @@ public class managerIndex {
         List<User> allUsers = userService.getAll();
         model.addAttribute("allUsers",allUsers);
         return "/manager/userOperation/user-list";
+    }
+
+    /*景点列表*/
+    @RequestMapping("/scenicList")
+    public String scenicList(Model model,@RequestParam(required = false,defaultValue = "1",value = "pn")Integer pn){
+        PageHelper.startPage(pn,4);
+        List<Scenic> all = scenicService.getAll();
+        PageInfo<Scenic> p = new PageInfo<>(all,5);
+        model.addAttribute("list",all);
+        model.addAttribute("pager",p);
+        return "/manager/ScenicOperation/scenic-list";
     }
 
     /*公告列表*/
