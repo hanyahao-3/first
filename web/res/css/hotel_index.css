@@ -68,3 +68,45 @@
     width: 1200px;
     margin-top: 30px;
 }
+.recomm_place-l{
+    float: left;
+}
+.recomm_place{
+    float: left;
+}
+.recomm_place ul li{
+    float: left;
+    width: 70px;
+    box-sizing: border-box;
+    text-align: center;
+    border-radius: 100px;
+}
+.recomm_place .on{
+    background-color: rgb(68,153,255);
+}
+.mid-f .fengefu hr{
+    margin-top: 50px;
+    border: 3px solid rgb(68,153,255);
+}
+.recomm_hotel ul li{
+    float: left;
+    width: 300px;
+    height: 260px;
+    padding: 10px 10px 0 10px;
+    box-sizing: border-box;
+}
+.recomm_hotel ul li img{
+    width: 280px;
+    height: 180px;
+}
+.recomm_hotel .recomm_hotel-name{
+    width: 280px;
+    height: 36px;
+    padding: 10px 6px 10px 6px;
+}
+.recomm_hotel .recomm_hotel_inf{
+    width: 280px;
+    height: 34px;
+    padding: 0 6px 14px 6px;
+}
+

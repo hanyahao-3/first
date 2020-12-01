@@ -203,6 +203,7 @@
 <%--<div style="height: 100px">--%>
 <%--    <jsp:include page="/common/ufooter.jsp" />--%>
 <%--</div>--%>
+<div style="width: 100%;height: 100px;margin-top: 540px;float: left;background-color: #666">
 <input type="hidden" id="userName" value="${userName}">
 <script>
     var userName = $('#userName').val();

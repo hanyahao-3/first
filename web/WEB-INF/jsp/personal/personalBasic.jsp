@@ -60,6 +60,7 @@
                     <dl>
                         <dt><a href="${ctx}/personal/orders">火车票订单</a></dt>
                         <dt><a href="#">酒店预订</a></dt>
+                        <dt><a href="#">景点预订</a></dt>
                     </dl>
                 </li>
                 <li>

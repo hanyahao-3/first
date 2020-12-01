@@ -26,7 +26,7 @@
             <li><a href="${ctx}/uIndex">首页</a></li>
             <li><a href="${ctx}/queryTickets">火车票</a></li>
             <li><a href="${ctx}/queryHotel">酒店</a></li>
-            <li><a href="${ctx}/queryTrategy">景点预订</a></li>
+            <li><a href="${ctx}/queryTrategy">景点攻略</a></li>
             <li class="check-on"><a href="${ctx}/queryPersonal">我的旅行</a></li>
         </ul>
     </div>
@@ -36,13 +36,15 @@
     <span>当前位置：</span><a href="${ctx}/login/uIndex" class="c_66">首页</a>
     >
     <a href="${ctx}/personal/personalCenter" class="c_66">个人中心</a>
+    >
+    <a href="${ctx}/personal/orders" class="c_66">景点票订单</a>
 </div>
 <div class="per-mid-m">
     <div class="per-mid-m-l">
         <div class="per-menu">
             <ul>
                 <li>
-                    <span><a href="#">个人中心</a> </span>
+                    <span><a href="${ctx}/personal/personalCenter">个人中心</a> </span>
                 </li>
                 <li>
                     <span>个人信息<i class="icon"></i></span>
@@ -58,7 +60,7 @@
                     <dl>
                         <dt><a href="${ctx}/personal/orders">火车票订单</a></dt>
                         <dt><a href="#">酒店预订</a></dt>
-                        <dt><a href="${ctx}/personal/scenicOrdersMessage">景点预订</a></dt>
+                        <dt><a href="#">景点预订</a></dt>
                     </dl>
                 </li>
                 <li>
@@ -84,11 +86,59 @@
             </ul>
         </div>
     </div>
-    <div class="per-mid-m-r">
-        <h2>下午好：${userName}</h2>
+    <div class="per-mid-m-r" class="order-tickets">
+        <div style="margin-top: 30px">
+
+        </div>
+        <table id="dingdan">
+            <tr>
+                <td>景点名</td>
+                <td>景点类型</td>
+                <td>景点目的地</td>
+                <td>景点编号</td>
+                <td>预订时间</td>
+                <td>操作</td>
+            </tr>
+            <c:forEach items="${ScenicMessList}" var="entry">
+                <tr>
+                    <td>${entry.scenic.scenic_name}</td>
+                    <td>${entry.scenic.scenic_detail.travel_type}</td>
+                    <td>${entry.scenic.scenic_detail.destination}</td>
+                    <td>${entry.scenic.scenic_detail.numbering}</td>
+                    <td><fmt:formatDate value="${entry.buy_time}" pattern="yyyy-MM-dd"/> </td>
+                    <td>
+                        <button class="btn btn-outline-danger" type="button"
+                                onclick="refundTicket(${entry.id})">
+                            退票
+                        </button>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
     </div>
 </div>
-
+<script>
+    function refundTicket(id) {
+        if (confirm("您确定要退掉这张票吗？")) {
+            $.ajax({
+                type: "POST",
+                url: "${ctx}/personal/refundTickets",
+                data: {
+                    "id":id
+                },
+                success: function (result) {
+                    if (result.res == 0) {
+                        alert("退票失败！");
+                    } else {
+                        alert("退票成功，请刷新页面！");
+                    }
+                }
+            })
+        } else {
+            return false;
+        }
+    }
+</script>
 <script>
     $(function () {
 

@@ -1,16 +1,21 @@
 package cn.han.controller;
 
 import cn.han.entity.Orders;
+import cn.han.entity.ScenicOrders;
 import cn.han.entity.Stations;
 import cn.han.entity.User;
 import cn.han.service.OrdersService;
+import cn.han.service.ScenicOrdersService;
 import cn.han.service.StationsService;
 import cn.han.service.UserService;
 import cn.han.utils.Consts;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -26,6 +31,8 @@ public class PersonalController {
     private UserService userService;
     @Autowired
     private StationsService stationsService;
+    @Autowired
+    private ScenicOrdersService scenicOrdersService;
 
     @RequestMapping("/personalCenter")
     public String personalCenter(){
@@ -35,6 +42,34 @@ public class PersonalController {
     @RequestMapping("/basicMessage")
     public String basicMessage(){
         return "/personal/personalBasic";
+    }
+
+    /*个人中西->景点预订查看*/
+    @RequestMapping("/scenicOrdersMessage")
+    public String scenicOrdersMessage(HttpServletRequest request,Model model){
+        Object attribute = request.getSession().getAttribute(Consts.USERNAME);
+        if (attribute == null){
+            return "/users/uLogin";
+        }
+        /*拿到所有票*/
+        List<ScenicOrders> entityByUserId = scenicOrdersService.getEntityByUserId((Integer) request.getSession().getAttribute(Consts.USERID));
+        model.addAttribute("ScenicMessList",entityByUserId);
+        return "/personal/scenicOrdersMessage";
+    }
+
+    /*退掉景点票*/
+    @ResponseBody
+    @RequestMapping("/refundTickets")
+    public Object refundTickets(@RequestParam("id")Integer id){
+        int i = scenicOrdersService.deleteById(id);
+        JSONObject jsonObject = new JSONObject();
+        if (i>0){
+            jsonObject.put(Consts.RES,1);
+            return jsonObject;
+        }else {
+            jsonObject.put(Consts.RES,0);
+            return jsonObject;
+        }
     }
 
     @RequestMapping("/orders")

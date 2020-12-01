@@ -395,7 +395,7 @@
     </ul>
 </div>
 
-<div style="width: 100%;height: 100px;margin-top: 650px;background-color: #666">
+<div style="width: 100%;height: 100px;margin-top: 40px;float: left;background-color: #666">
 </div>
 </body>
 </html>

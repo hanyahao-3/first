@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.han.mapper.ScenicOrdersMapper">
+
+    <resultMap id="ResultMapScenicOrders" type="ScenicOrders">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="user_id" column="user_id" jdbcType="INTEGER"/>
+        <result property="scenic_id" column="scenic_id" jdbcType="INTEGER"/>
+        <result property="buy_time" column="buy_time" jdbcType="TIMESTAMP"/>
+        <association property="user" column="user_id" select="cn.han.mapper.UserMapper.getById"/>
+        <association property="scenic" column="scenic_id" select="cn.han.mapper.ScenicMapper.getById"/>
+    </resultMap>
+
+    <sql id="ScenicOrders_field">
+        id,user_id,scenic_id,buy_time
+    </sql>
+
+    <sql id="ScenicOrders_fieldsql">
+        id,user_id,scenic_id,buy_time
+    </sql>
+
+    <sql id="ScenicOrders_where">
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="user_id != null">
+            and user_id = #{user_id}
+        </if>
+        <if test="scenic_id != null">
+            and scenic_id = #{scenic_id}
+        </if>
+        <if test="buy_time != null">
+            and buy_time = #{buy_time}
+        </if>
+    </sql>
+
+    <!--  更新  -->
+    <sql id="ScenicOrders_update">
+        <if test="user_id != null">
+            user_id = #{user_id},
+        </if>
+        <if test="scenic_id != null">
+            scenic_id = #{scenic_id},
+        </if>
+        <if test="buy_time != null">
+            buy_time = #{buy_time},
+        </if>
+    </sql>
+
+    <insert id="insertEntity" parameterType="ScenicOrders">
+        insert into scenic_orders(user_id,scenic_id,buy_time) values (#{user_id},#{scenic_id},#{buy_time})
+    </insert>
+
+    <select id="getEntityByUserId" parameterType="Integer" resultMap="ResultMapScenicOrders">
+        select * from scenic_orders where user_id=#{user_id}
+    </select>
+
+    <delete id="deleteById" parameterType="Integer" >
+        delete from scenic_orders where id=#{id}
+    </delete>
+</mapper>

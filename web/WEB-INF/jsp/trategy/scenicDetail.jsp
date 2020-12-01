@@ -17,6 +17,8 @@
     <script src="${ctx}/res/js/index.js" type="text/javascript"></script>
     <link href="${ctx}/res/css/index.css" type="text/css" rel="stylesheet">
     <link href="${ctx}/res/css/scenicDetail.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="${ctx}/res/manager/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="${ctx}/res/manager/js/index.js"></script>
 </head>
 <body>
 <%@include file="/common/utop.jsp" %>
@@ -66,11 +68,11 @@
                 <table>
                     <tr>
                         <td style="width: 100px">旅游类型</td>
-                        <td style="width: 300px">跟团游</td>
+                        <td style="width: 300px">单人游</td>
                     </tr>
                     <tr>
                         <td>行程天数</td>
-                        <td>15天</td>
+                        <td>1天</td>
                     </tr>
                     <tr>
                         <td>联系电话</td>
@@ -87,7 +89,7 @@
                 </font>
             </div>
             <div class="buy-button">
-                <button type="button" class="btn btn-outline-success">预订</button>
+                <button type="button" class="btn btn-outline-success" onclick="xadmin.open('预订景点票', '${ctx}/uSceninc/toScenicBuy?id=${sceniceDetail.id}',600,800)">预订</button>
             </div>
         </div>
     </div>

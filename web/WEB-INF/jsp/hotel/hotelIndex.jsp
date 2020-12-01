@@ -63,10 +63,11 @@
             </tr>
             <tr>
                 <td class="labe">入住</td>
-                <td class="ft_time"><input type="text" name="datetime" class="ui_timepicker ft_time" id="in_time" value="2020-11-11"
+                <td class="ft_time"><input type="text" name="datetime" class="ui_timepicker ft_time" id="in_time"
+                                           value="2020-11-11"
                                            required="" lay-verify="required"> 离店
                     <input type="text" name="datetime" class="ui_timepicker ft_time" id="out_time" value="2020-11-12"
-                                                                                        required="" lay-verify="required"></td>
+                           required="" lay-verify="required"></td>
             </tr>
             <tr>
                 <td class="labe">关键词</td>
@@ -83,16 +84,97 @@
 </div>
 <div class="mid-f">
     <h3>酒店推荐</h3>
-    <span>入住城市&nbsp;&nbsp;:</span>
-    <span class="">
+    <span class="recomm_place-l">入住城市&nbsp;&nbsp;:</span>
+    <span class="recomm_place">
         <ul>
-            <li>北京</li>
+            <li class="on">北京</li>
             <li>上海</li>
             <li>广州</li>
             <li>深圳</li>
-            <li>更多</li>
+            <li>更多\/</li>
         </ul>
     </span>
+    <div class="fengefu">
+        <hr/>
+    </div>
+    <div class="recomm_hotel">
+        <ul>
+            <li>
+                <img src="${ctx}/res/img/nw_V9cgAkniMg.jpg"/>
+                <div class="recomm_hotel-name">
+                    成都速时8公寓
+                </div>
+                <div class="recomm_hotel_inf">
+                    <div style="float: left">
+                        <span>
+                            4.9分 |
+                        </span>
+                        <span>
+                            有消毒措施
+                        </span>
+                    </div>
+                    <div style="float: right">
+                        <font color="red">$70</font>起
+                    </div>
+                </div>
+            </li>
+            <li><img src="${ctx}/res/img/nw_000dfDkH.jpg"/>
+                <div class="recomm_hotel-name">
+                    成都都锦酒店式公寓
+                </div>
+                <div class="recomm_hotel_inf">
+                    <div style="float: left">
+                        <span>
+                            4.9分 |
+                        </span>
+                        <span>
+                            有消毒措施
+                        </span>
+                    </div>
+                    <div style="float: right">
+                        <font color="red">$176</font>起
+                    </div>
+                </div>
+            </li>
+            <li><img src="${ctx}/res/img/nw_GPw1WSwsBW.jpg"/>
+                <div class="recomm_hotel-name">
+                    成都悦澜乐居酒店
+                </div>
+                <div class="recomm_hotel_inf">
+                    <div style="float: left">
+                        <span>
+                            4.8分 |
+                        </span>
+                        <span>
+                            有消毒措施
+                        </span>
+                    </div>
+                    <div style="float: right">
+                        <font color="red">$198</font>起
+                    </div>
+                </div>
+            </li>
+            <li><img src="${ctx}/res/img/nw_V9cgAkniMg.jpg"/>
+                <div class="recomm_hotel-name">
+                    成都十方青年客栈
+                </div>
+                <div class="recomm_hotel_inf">
+                    <div style="float: left">
+                        <span>
+                            4.6分 |
+                        </span>
+                        <span>
+                            前台热情
+                        </span>
+                    </div>
+                    <div style="float: right">
+                        <font color="red">$45</font>起
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 </div>
+<div style="width: 100%;height: 100px;float:left;background-color: #666;margin-top: 40px">
 </body>
 </html>
