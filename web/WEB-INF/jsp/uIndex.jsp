@@ -170,16 +170,29 @@
     <div class="displays-3">
         <ul>
             <li>
-                <a href="#">
-                    <img src="${ctx}/res/img/243945e6-c45d-4870-9cf5-77e488068646_product_W572_H370.jpg">
+                <a href="${ctx}/uSceninc/toScenincDetail?id=${testSc.id}">
+                    <img src="${testSc.url1}">
                     <div class="displays-3-div">
-                        <h3>“环西部火车游” 高品质旅游版专线列车</h3>
+                        <h3>${testSc.scenic_name}</h3>
                         <div class="displays-3-price">
                             ￥2560
                         </div>
                     </div>
                 </a>
             </li>
+<%--            <c:forEach items="${testSc}" var="tes">--%>
+<%--                <li>--%>
+<%--                    <a href="${ctx}/uSceninc/toScenincDetail?id=${tes.id}">--%>
+<%--                        <img src="${tes.url1}">--%>
+<%--                        <div class="displays-3-div">--%>
+<%--                            <h3>“${tes.scenic}“</h3>--%>
+<%--                            <div class="displays-3-price">--%>
+<%--                                ￥2560--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </a>--%>
+<%--                </li>--%>
+<%--            </c:forEach>--%>
             <li>
                 <a href="#">
                     <img src="${ctx}/res/img/fcd7173f-7651-46e7-a126-bdc199e1f6f7_product_W572_H370.jpg">
@@ -271,30 +284,54 @@
         </ul>
     </div>
     <div class="footer-menu-lists-details">
-        <div class="item2">
+        <div class="item2" id="item2">
             <ul>
                 <c:forEach items="${announcements}" var="announcement">
                     <li>
-                        <span style="float: left">
-                            <a href="${ctx}/uAnnouncement?id=${announcement.id}">${announcement.annountcments_name}</a>
-                        </span>
+            <span style="float: left">
+                <a href="${ctx}/uAnnouncement?id=${announcement.id}">${announcement.annountcments_name}</a>
+            </span>
                         <span style="float:right;">
-                            <fmt:formatDate value="${announcement.add_time}" pattern="yyyy-MM-dd HH:mm:ss"/>
-                        </span>
+                <fmt:formatDate value="${announcement.add_time}" pattern="yyyy-MM-dd HH:mm:ss"/>
+            </span>
                     </li>
                 </c:forEach>
             </ul>
             <div style="margin-top: 40px;margin-left: 400px">
-                <a href="${ctx}/uIndex?pn=1">首页</a>
-                <a href="${ctx}/uIndex?pn=${pager.prePage}">下一页</a>
+                <%--                <a href="${ctx}/uIndex?pn=1">首页</a>--%>
+                <%--                <a href="${ctx}/uIndex?pn=${pager.prePage}">下一页</a>--%>
+                <%--                <c:forEach items="${pager.navigatepageNums}" var="pag">--%>
+                <%--                    <a href="${ctx}/uIndex?pn=${pag}">${pag}</a>--%>
+                <%--                </c:forEach>--%>
+                <%--                <a href="${ctx}/uIndex?pn=${pager.nextPage}">下一页</a>--%>
+                <%--                <a href="${ctx}/uIndex?pn=${pager.navigateLastPage}">尾页</a>--%>
+                <%--                <a href="${ctx}/uIndex?pn=${pager.pageNum}">第${pager.pageNum}页</a>--%>
+                <a href=javascript:fenye("1")>首页</a>
+                <a href=javascript:fenye("${pager.prePage}")>上一页</a>
                 <c:forEach items="${pager.navigatepageNums}" var="pag">
-                    <a href="${ctx}/uIndex?pn=${pag}">${pag}</a>
+                    <a href=javascript:fenye("${pag}")>${pag}</a>
                 </c:forEach>
-                <a href="${ctx}/uIndex?pn=${pager.nextPage}">下一页</a>
-                <a href="${ctx}/uIndex?pn=${pager.navigateLastPage}">尾页</a>
-                <a href="${ctx}/uIndex?pn=${pager.pageNum}">第${pager.pageNum}页</a>
+                <a href=javascript:fenye("${pager.nextPage}")>下一页</a>
+                <a href=javascript:fenye("${pager.navigateLastPage}")>尾页</a>
+                <a href=javascript:fenye("${pager.pageNum}")>
+                    <c:choose>
+                        <c:when test="${pager.pageNum==0}">
+                            第1页
+                        </c:when>
+                        <c:otherwise>
+                            第${pager.pageNum}页
+                        </c:otherwise>
+                    </c:choose>
+                </a>
             </div>
         </div>
+        <script>
+            function fenye(fn) {
+                $('#item2').load("${ctx}/annouc?pn="+fn,function () {
+
+                })
+            }
+        </script>
         <div class="item2">菜单2-box</div>
         <div class="item2">菜单3-box</div>
 

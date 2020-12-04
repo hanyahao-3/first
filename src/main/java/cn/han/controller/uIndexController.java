@@ -6,6 +6,7 @@ import cn.han.service.AnnouncementsService;
 import cn.han.service.ScenicService;
 import cn.han.service.impl.AnnouncementsServiceImpl;
 import cn.han.utils.Consts;
+import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.ibatis.annotations.Param;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -28,6 +30,16 @@ public class uIndexController {
     @Autowired
     private ScenicService scenicService;
 
+    @RequestMapping("/annouc")
+    public String annouc(Model model,@RequestParam(required = false,defaultValue = "1",value = "pn")Integer pn){
+        PageHelper.startPage(pn,4);
+        List<Announcements> all = announcementsService.getAll();
+        PageInfo<Announcements> p = new PageInfo<>(all,5);
+        model.addAttribute("announcements",all);
+        model.addAttribute("pager",p);
+        return "/users/annouc";
+    }
+
     @RequestMapping("/uIndex")
     public String uIndex(Model model,@RequestParam(required = false,defaultValue = "1",value = "pn")Integer pn){
         PageHelper.startPage(pn,4);
@@ -35,8 +47,12 @@ public class uIndexController {
         PageInfo<Announcements> p = new PageInfo<>(all,5);
         model.addAttribute("announcements",all);
         model.addAttribute("pager",p);
+
+        Scenic testSc = scenicService.testSc();
+        model.addAttribute("testSc",testSc);
         return "/uIndex";
     }
+
 
     @RequestMapping("/uAnnouncement")
     private String uAnnouncement(Integer id,Model model){

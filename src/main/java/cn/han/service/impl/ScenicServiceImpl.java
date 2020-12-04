@@ -43,4 +43,9 @@ public class ScenicServiceImpl implements ScenicService {
     public List<Scenic> getHotScenic() {
         return scenicMapper.getHotScenic();
     }
+
+    @Override
+    public Scenic testSc() {
+        return scenicMapper.testSc();
+    }
 }

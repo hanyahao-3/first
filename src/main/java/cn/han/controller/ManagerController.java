@@ -50,10 +50,10 @@ public class ManagerController {
      */
     @RequestMapping("/mIndex")
     public String tomIndex(HttpServletRequest request){
-        /*Object attribute = request.getSession().getAttribute(Consts.MANAGE);
+        Object attribute = request.getSession().getAttribute(Consts.MANAGE);
         if (attribute==null){
             return "/manager/mLogin";
-        }*/
+        }
         return "/manager/mIndex";
     }
 

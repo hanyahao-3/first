@@ -47,45 +47,47 @@
                 <li>
                     <span>个人信息<i class="icon"></i></span>
                     <dl>
-                        <dt><a href="${ctx}/personal/basicMessage">查看个人信息</a></dt>
-                        <dt><a href="#">账号安全</a></dt>
-                        <dt><a href="#">手机核验</a></dt>
-                        <dt><a href="#">账号注销</a></dt>
+                        <dt><a href="${ctx}/personal/basicMessage" target="displayArea">查看个人信息</a></dt>
+                        <dt><a href="#" target="displayArea">账号安全</a></dt>
+                        <dt><a href="#" target="displayArea">手机核验</a></dt>
+                        <dt><a href="#" target="displayArea">账号注销</a></dt>
                     </dl>
                 </li>
                 <li>
                     <span>订单中心<i class="icon"></i></span>
                     <dl>
-                        <dt><a href="${ctx}/personal/orders">火车票订单</a></dt>
-                        <dt><a href="#">酒店预订</a></dt>
-                        <dt><a href="${ctx}/personal/scenicOrdersMessage">景点预订</a></dt>
+                        <dt><a href="${ctx}/personal/orders" target="displayArea">火车票订单</a></dt>
+                        <dt><a href="#" target="displayArea">酒店预订</a></dt>
+                        <dt><a href="${ctx}/personal/scenicOrdersMessage"  target="displayArea">景点预订</a></dt>
                     </dl>
                 </li>
                 <li>
                     <span>常用信息管理<i class="icon"></i></span>
                     <dl>
-                        <dt><a href="#">乘车人</a></dt>
-                        <dt><a href="#">地址管理</a></dt>
+                        <dt><a href="#" target="displayArea">乘车人</a></dt>
+                        <dt><a href="#" target="displayArea">地址管理</a></dt>
                     </dl>
                 </li>
                 <li>
                     <span>温馨服务<i class="icon"></i></span>
                     <dl>
-                        <dt><a href="#">遗失物品查找</a></dt>
+                        <dt><a href="#" target="displayArea">遗失物品查找</a></dt>
                     </dl>
                 </li>
                 <li>
                     <span>投诉和建议<i class="icon"></i></span>
                     <dl>
-                        <dt><a href="#">投诉</a></dt>
-                        <dt><a href="#">建议</a></dt>
+                        <dt><a href="" target="displayArea">投诉</a></dt>
+                        <dt><a href="" target="displayArea">建议</a></dt>
                     </dl>
                 </li>
             </ul>
         </div>
     </div>
     <div class="per-mid-m-r">
-        <h2>下午好：${userName}</h2>
+        <iframe src="${ctx}/personal/welcome" name="displayArea" width="100%" height="100%" scrolling="yes" id="dispalyArea" frameborder="0">
+<%--            <h2>下午好：${userName}</h2>--%>
+        </iframe>
     </div>
 </div>
 
@@ -94,8 +96,11 @@
 
         $(".per-menu ul li").find("dl").slideToggle(0);
         $(".per-menu ul li").click(function () {
-            $(this).find("dl").slideToggle(200);
+            // $(this).find("dl").slideToggle(200);
             $(this).find("span i").toggleClass('action').parents().siblings().find("span i").removeClass('action');
+        })
+        $(".per-menu ul li span").click(function () {
+            $(this).parent().find("dl").slideToggle(200);
         })
     })
 </script>

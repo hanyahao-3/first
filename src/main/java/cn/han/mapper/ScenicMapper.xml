@@ -117,4 +117,8 @@
     <select id="getHotScenic" resultType="Scenic">
         select * from scenic order by collection_sum desc limit 0,3
     </select>
+
+    <select id="testSc" resultType="Scenic">
+        select * from scenic where collection_sum=1
+    </select>
 </mapper>

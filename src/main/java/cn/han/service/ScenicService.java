@@ -16,4 +16,6 @@ public interface ScenicService {
     int updateByEntity(Scenic scenic);
 
     List<Scenic> getHotScenic();
+
+    Scenic testSc();
 }

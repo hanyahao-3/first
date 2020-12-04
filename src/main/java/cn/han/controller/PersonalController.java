@@ -34,6 +34,11 @@ public class PersonalController {
     @Autowired
     private ScenicOrdersService scenicOrdersService;
 
+    @RequestMapping("/welcome")
+    public String welcome(){
+        return "/personal/welcome";
+    }
+
     @RequestMapping("/personalCenter")
     public String personalCenter(){
         return "/personal/personalIndex";
